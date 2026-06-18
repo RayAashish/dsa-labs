@@ -20,47 +20,44 @@ class SubsequencesAllPatterns{
 		}
 	}
 
-	// Print any one sub-sequence (here we are using extra boolean flag but it's better to use functional way to find it)
-	static void printOneSubWithSumK(int[] arr, int start, List<Integer> ds, int k, int[] sum, boolean[] flag){
-		if (sum[0] == k){
-			flag[0] = true;
-			System.out.println(ds);
-			return;
-		}
-		if (sum[0] > k)
-			return;
-
-		for (int i = start; i < arr.length; i++){
-			if (flag[0])
-				break;
-			ds.add(arr[i]);
-			sum[0] += arr[i];
-			printOneSubWithSumK(arr, i + 1, ds, k, sum, flag);
-			ds.removeLast();
-			sum[0] -= arr[i];
-		}
-	}
-
 	static boolean printOneSubWithSumKFunctionalWay(int[] arr, int start, List<Integer> ds, int k, int[] sum){
-		if (sum[0] == k){
+		if(sum[0] == k){
 			System.out.println(ds);
 			return true;
 		}
+		if (start == arr.length)
+			return false;
 
 		for (int i = start; i < arr.length; i++){
+			sum[0] += arr[i];
 			ds.add(arr[i]);
-			sum[0] = arr[i];
 			if (printOneSubWithSumKFunctionalWay(arr, i + 1, ds, k, sum))
 				return true;
-			ds.removeLast();
 			sum[0] -= arr[i];
+			ds.removeLast();
 		}
 		return false;
 	}
 
+	static boolean printOneSubWithSumKFunctionalWay2(int[] arr, int i, List<Integer> ds, int k, int sum){
+		if (i == arr.length){
+			if (sum == k){
+				System.out.println(ds);
+				return true;
+			}
+			return false;
+		}
+		ds.add(arr[i]);
+		if (printOneSubWithSumKFunctionalWay2(arr, i + 1, ds, k, sum + arr[i]))
+			return true;
 
+		ds.removeLast();
+		if (printOneSubWithSumKFunctionalWay2(arr, i + 1, ds, k, sum ))
+			return true;
 
-	
+		return false;
+
+	}
 
 	public static void main(String[] args) {
 		int[] nums = {3, 4, 7, 2, 8, 0, 1};
@@ -68,7 +65,8 @@ class SubsequencesAllPatterns{
 		int[] sum = {0};
 		boolean[] flag = {false};
 		List<Integer> ds = new ArrayList<>();
-		printOneSubWithSumKFunctionalWay(nums, 0, ds, k, sum);
+		// printOneSubWithSumKFunctionalWay(nums, 0, ds, k, sum);
+		printOneSubWithSumKFunctionalWay2(nums, 0, ds, k, 0);
 
 	}
 }
