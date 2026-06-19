@@ -82,6 +82,20 @@ class SubsequencesAllPatterns{
 		return count;
 	}
 
+	static int countSub3(int[] arr, int start, int k, int sum){
+		if (start == arr.length){
+			if (sum == k){
+				return 1;
+			}
+			return 0;
+		}
+
+		int l = countSub3(arr, start + 1, k, sum + arr[start]);
+		int r = countSub3(arr, start + 1, k, sum - arr[start]);
+
+		return l + r;
+	}
+
 	public static void main(String[] args) {
 		int[] nums = {3, 4, 7, 2, 8, 0, 1};
 		int k = 7;
@@ -94,7 +108,8 @@ class SubsequencesAllPatterns{
 		// printOneSubWithSumKFunctionalWay2(nums, 0, ds, k, 0);
 		// countSub(nums, 0, sum, 7, count);
 		// System.out.println(count[0]);
-		System.out.println(countSub2(nums, 0, 7, 0));
+		// System.out.println(countSub2(nums, 0, 7, 0));
+		System.out.println(countSub3(nums, 0, 7, 0));
 
 	}
 }
