@@ -91,7 +91,7 @@ class SubsequencesAllPatterns{
 		}
 
 		int l = countSub3(arr, start + 1, k, sum + arr[start]);
-		int r = countSub3(arr, start + 1, k, sum - arr[start]);
+		int r = countSub3(arr, start + 1, k, sum);
 
 		return l + r;
 	}
