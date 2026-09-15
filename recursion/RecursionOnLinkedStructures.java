@@ -31,12 +31,12 @@ public class RecursionOnLinkedStructures{
 
 	public static void main(String[] args) {
 		int[] nums = {1, 2, 3, 2, 1}; //It should return true
-		int[] nums2 = {1, 2,3 , 45}; //It should return false;
+		int[] nums2 = {1, 2, 3, 45}; //It should return false;
 		String s = "racecar";
 		String s2 = "dukduk";
 		System.out.println(checkPalindrome(nums, 0, nums.length - 1));
-		System.out.println(checkPalindrome(nums2, 0, nums.length - 1));
-		System.out.println(checkPalindromeString(s, 0, nums.length - 1));
-		System.out.println(checkPalindromeString(s2, 0, nums.length - 1));
+		System.out.println(checkPalindrome(nums2, 0, nums2.length - 1));
+		System.out.println(checkPalindromeString(s, 0, s.length() - 1));
+		System.out.println(checkPalindromeString(s2, 0, s2.length() - 1));
 	}
 }

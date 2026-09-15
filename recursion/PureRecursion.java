@@ -37,24 +37,13 @@ public class PureRecursion{
 		reverseArray(nums, l + 1, r - 1);
 	}
 
-	static void reverseString(String str, int l, int r){
-		if (l >= r)
-			return;
-		char temp = str.charAt(l);
-		str.charAt(l) = str.charAt(r);
-		str.charAt(r) = temp;
-		reverseString(str, l + 1, r - 1);
-	}
-
 	public static void main(String[] args) {
 		int n = 10;
 		int[] nums = {1, 2, 3, 4, 5};
-		String str = "momo";
 		System.out.println(factorial(n));
 		System.out.println(sumOfFirstNNumbers(n));
 		System.out.println(power(2, 10));
 		reverseArray(nums, 0, nums.length - 1);
 		System.out.println(Arrays.toString(nums));
-		System.out.println(str, 0, str.length() - 1);
 	}
 }
