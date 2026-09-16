@@ -17,7 +17,19 @@ public class RecursionBasics{
 
 	}
 
+	static int factorial(int n){
+		if (n == 0 || n == 1)
+			return 1;
+		return n * factorial(n - 1);
+	}
+
+	static int sumOfN(int n){
+		if (n == 1)
+			return 1;
+		return n + sumOfN(n - 1);
+	}
 	public static void main(String[] args) {
-		printNums(10);
+		int x = sumOfN(5);
+		System.out.println(x);
 	}
 }
