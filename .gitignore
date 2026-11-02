@@ -1,3 +1,4 @@
 # Classes
 *.class
 .DS_Store
+**/.DS_Store
